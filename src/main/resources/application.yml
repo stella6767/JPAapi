@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/ #springboot/src/main/webapp
+      suffix: .jsp
+
+#Connection conn = DBConn.getConnection
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springdb?serverTimezone=Asia/Seoul
+    username: springuser
+    password: bitc5600
+
+
+# JPA-JAVA Persistence API (DAO 내장)-기반기술(hibernate<=ORM)
+# Object Realation Mapping(원래는 fk로 해야됨=>Java Object)
+# 기능1: 자바 오브젝트 생성하면 -> 테이블이 생성된다.
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #언더바전략을 따르지않고 네이밍 규칙을 내가 만든 모델그대로
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
